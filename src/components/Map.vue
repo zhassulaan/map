@@ -1,19 +1,17 @@
 <template>
-  <div id="map-container">
-    <GoogleMap
-      api-key="AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao"
-      :center="center"
-      :zoom="12"
-      style="width: 100%; height: 500px"
-    >
-      <Marker :options="{ position: center }" />
-      <Polygon
-        v-for="(polygon, index) in polygons"
-        :key="index"
-        :options="polygon"
-      />
-    </GoogleMap>
-  </div>
+  <GoogleMap
+    api-key="AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao"
+    :center="center"
+    :zoom="12"
+    style="width: 100%; height: 500px"
+  >
+    <Marker :options="{ position: center }" />
+    <Polygon
+      v-for="(polygon, index) in polygons"
+      :key="index"
+      :options="polygon"
+    />
+  </GoogleMap>
 </template>
 
 <script setup lang="ts">
@@ -77,5 +75,3 @@ onMounted(() => {
   fetchData();
 });
 </script>
-
-<style scoped></style>
