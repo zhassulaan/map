@@ -56,7 +56,7 @@ const polygonOptions = {
 };
 
 async function fetchData() {
-  const response = await axios.get<PolygonData[]>('/src/points.json');
+  const response = await axios.get<PolygonData[]>('/src/assets/points.json');
   const data = response.data;
   polygons.value = data.map(entry => ({
     ...polygonOptions,
