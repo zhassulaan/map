@@ -1,0 +1,26 @@
+# Директории и файлы, генерируемые npm
+node_modules/
+dist/
+
+# Лог-файлы
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Директории, связанные с IDE/редакторами
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS файлы
+.DS_Store
+
+# Лог-файлы и конфигурации системы
+*.log
+*.env.local
+*.env.*.local
+
+# Кеши и конфигурации инструментов
+.eslintcache
+.stylelintcache
