@@ -16,13 +16,39 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { GoogleMap, Marker, Polygon } from 'vue3-google-map'
+import { GoogleMap, Marker, Polygon } from 'vue3-google-map';
 import axios from 'axios';
 
-const center = ref({ lat: 36.1699, lng: -115.1398 });
-const polygons = ref([]);
+interface Coordinate {
+  lat: number;
+  lng: number;
+}
+interface Boundary {
+  type: string;
+  coordinates: number[][][][];
+}
+interface PolygonData {
+  id: number;
+  n_of_donuts: number;
+  attend_a_zoo: boolean;
+  can_cook_pizza: boolean;
+  n_of_coffee: number;
+  spent_in_amazon: number;
+  boundaries: Boundary;
+}
+interface PolygonOptions {
+  strokeColor: string;
+  strokeOpacity: number;
+  strokeWeight: number;
+  fillColor: string;
+  fillOpacity: number;
+  paths: Coordinate[];
+}
+
+const center = ref<Coordinate>({ lat: 36.1699, lng: -115.1398 });
+const polygons = ref<PolygonOptions[]>([]);
 const polygonOptions = {
   strokeColor: '#4285F4',
   strokeOpacity: 0.8,
@@ -32,17 +58,18 @@ const polygonOptions = {
 };
 
 async function fetchData() {
-  const response = await axios.get('/src/points.json');
+  const response = await axios.get<PolygonData[]>('/src/points.json');
   const data = response.data;
   polygons.value = data.map(entry => ({
     ...polygonOptions,
     paths: getPolygonCoordinates(entry.boundaries.coordinates[0][0]),
   }));
 };
-function getPolygonCoordinates(coordinates) {
-  return coordinates.map(polygon => ({
-    lat: polygon[1],
-    lng: polygon[0]
+
+function getPolygonCoordinates(coordinates: number[][]): Coordinate[] {
+  return coordinates.map(([lng, lat]) => ({
+    lat,
+    lng
   }));
 };
 
@@ -50,3 +77,5 @@ onMounted(() => {
   fetchData();
 });
 </script>
+
+<style scoped></style>
