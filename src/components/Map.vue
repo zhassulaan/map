@@ -27,7 +27,7 @@ interface Coordinate {
 
 const center = ref<Coordinate>({ lat: 36.1699, lng: -115.1398 });
 const store = useStore();
-const polygons = computed(() => store.getters.polygons);
+const polygons = computed(() => store.getters.filteredPolygons);
 const polygonOptions = {
   strokeColor: '#4285F4',
   strokeOpacity: 0.8,

@@ -4,7 +4,7 @@
       <Map/>
     </Container>
     <Container id="container2">
-      <h5>Filter</h5>
+      <Filter />
     </Container>
   </main>
 </template>
@@ -12,6 +12,7 @@
 <script setup>
 import Container from '@/components/Container.vue';
 import Map from '@/components/Map.vue';
+import Filter from '@/components/Filter.vue';
 </script>
 
 <style scoped>
