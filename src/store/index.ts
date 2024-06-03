@@ -103,16 +103,12 @@ function computeMinMax(polygons: PolygonData[]): State['filters'] {
   polygons.forEach(polygon => {
     minMax.n_of_donuts[0] = Math.min(minMax.n_of_donuts[0], polygon.n_of_donuts);
     minMax.n_of_donuts[1] = Math.max(minMax.n_of_donuts[1], polygon.n_of_donuts);
-
     minMax.attend_a_zoo[0] = Math.min(minMax.attend_a_zoo[0], polygon.attend_a_zoo ? 1 : 0);
     minMax.attend_a_zoo[1] = Math.max(minMax.attend_a_zoo[1], polygon.attend_a_zoo ? 1 : 0);
-
     minMax.can_cook_pizza[0] = Math.min(minMax.can_cook_pizza[0], polygon.can_cook_pizza ? 1 : 0);
     minMax.can_cook_pizza[1] = Math.max(minMax.can_cook_pizza[1], polygon.can_cook_pizza ? 1 : 0);
-
     minMax.n_of_coffee[0] = Math.min(minMax.n_of_coffee[0], polygon.n_of_coffee);
     minMax.n_of_coffee[1] = Math.max(minMax.n_of_coffee[1], polygon.n_of_coffee);
-
     minMax.spent_in_amazon[0] = Math.min(minMax.spent_in_amazon[0], polygon.spent_in_amazon);
     minMax.spent_in_amazon[1] = Math.max(minMax.spent_in_amazon[1], polygon.spent_in_amazon);
   });
