@@ -6,13 +6,14 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { withDefaults } from 'vue';
+
+const props = withDefaults(defineProps<{
   text: string,
-  active: {
-    type: boolean,
-    default: false
-  }
-}>();
+  active?: boolean
+}>(), {
+  active: false
+});
 </script>
 
 <style scoped lang="scss">
